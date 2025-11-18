@@ -12,9 +12,11 @@ struct Step {
     next_states: Set<State>, // The states that can be transitioned to from this state
 }
 
+// The key is the state you are currently in,
+// and the value is the Step describing transitions *from* that state.
 struct Workflow {
-  // The key is the state you're transitioning into,
-  // and the value is the Step representing that next state.
+  initial_state: State,
+  final_states: Set<State>, // The states that are terminal
   steps: Map<State, Step>,
 }
 
@@ -44,7 +46,6 @@ impl Workflow {
         self.steps.contains_key(s)
     }
 }
-
 
 fn main() {
   // TODO: Build out the workflow in terms of steps and states
