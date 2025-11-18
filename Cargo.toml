@@ -1,0 +1,11 @@
+[package]
+name = "byu-cs-686-project"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+vstd = { git = "https://github.com/verus-lang/verus.git", branch = "main" }
+
+[features]
+default = ["verus"]
+verus = []
