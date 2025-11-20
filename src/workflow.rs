@@ -1,31 +1,17 @@
 use vstd::prelude::*;
+use crate::workflow_common::{Transition, Step, Workflow};
 
 verus! {
 
 // ============================================
-// GENERIC WORKFLOW ENGINE
+// GENERIC WORKFLOW IMPLEMENTATION
+// Implementation of Workflow methods
 // ============================================
 
-// Represents a transition from one state to another
-pub struct Transition {
-    pub target: int,
-}
-
-pub struct Step {
-    pub transitions: Set<Transition>,
-}
-
-// Generic workflow structure
-pub struct Workflow {
-    pub initial_state: int,
-    pub final_states: Set<int>, // The states that are terminal
-    pub steps: Map<int, Step>,
-}
-
 impl Workflow {
-  // Ensure initial_state exists in steps
-  // Ensure final_states are valid terminal states
-  // Ensure all transitions reference valid states
+    // Ensure initial_state exists in steps
+    // Ensure final_states are valid terminal states
+    // Ensure all transitions reference valid states
     pub open spec fn valid(self) -> bool {
         self.steps.contains_key(self.initial_state) &&
         forall|s| #[trigger] self.final_states.contains(s) ==> self.is_terminal(s) &&

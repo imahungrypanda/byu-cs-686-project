@@ -1,5 +1,5 @@
 use vstd::prelude::*;
-use crate::workflow::{Transition, Step, Workflow};
+use crate::workflow_common::{Transition, Step, Workflow};
 
 verus! {
 
